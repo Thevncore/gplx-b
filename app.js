@@ -58,6 +58,11 @@ $('#sidebar').addEventListener('click', e => {
   $('#sidebar').classList.remove('open');
 });
 $('#menuBtn').addEventListener('click', () => $('#sidebar').classList.toggle('open'));
+$('#themeBtn').addEventListener('click', () => {
+  const dark = document.documentElement.getAttribute('data-theme') !== 'dark';
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+});
 
 function openNav(id) {
   stopTimer();
